@@ -2,7 +2,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>ToDoアプリ</title>
+  <title>ToDoアプリ5</title>
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css'>
 <link rel='stylesheet' href='https://unpkg.com/@mdi/font@6.x/css/materialdesignicons.min.css'>
 <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900'>
@@ -10,68 +10,141 @@
 </head>
 <body>
 <!-- partial:index.partial.html -->
+<!-- <h1>My ToDo App</h1> -->
 <!-- Vueで指定された"app"要素、この中でのみVueが有効 -->
+<!-- 
+<head>
+  <meta charset="UTF-8">
+  <script src="lib/vue.js"></script>
+  <script defer src="tet.js"></script>
+  <title>VueTable</title>
+</head>
+-->
+
 <div id="app">
   <v-app>
-    <v-content>
-      <v-container>
-        <v-row
-          class="text-h3 mb-3 mt-3"
-          justify="left"
-          >
-          My ToDo App
-        </v-row>
-        <v-row
-          class="mb-10 mt-10"
-          align="right"
-          justify="right"
-          >
-          <v-col 
-            cols="15"            
-            >
-            <v-text-field
-                  class="ml-30 mr-30"
-                  v-model:value="task"                         
-                  label="タスクを入力"
-                  placeholder="長いタスクを入力…"
-                  field
-            >
-          </v-col>
-        </v-row>
-        <v-row
-          class="mb-3 mt-3"
-          align="center"
-          justify="center"
-          >
-          タスク内容：{{ task }}
-          <v-btn v-on:click="addTask"
-               fab
-               dark
-               small               
-               color="red"
-               >
-                 <v-icon dark>
-                   mdi-plus
-                 </v-icon>
-               </v-btn>
-        </v-row>
-        <v-row
-          class="mb-20 mt-20"
-          justify="right"
-          > 
-          <v-btn v-on:click="clearAll"
-                 
+   <v-container>
+     <div class="d-flex flex-row">
+     <h1 style="color:red">タスク管理ツール</h1>
+     <v-img 
+            :max-width="70"
+            :max-height="50"
+            aspect-ratio="4/3"
+            cover src="https://msp.c.yimg.jp/images/v2/FUTi93tXq405grZVGgDqGyD1CH1a31Q1v8fzqtaNibp5-UJrpffx_bAW0jw4WVKV5b9UG-chcGcHJnagxcbw3R8GwMf_VsG_nn0MvC8aWaF-L-ew2x0oWaWjL1NwmxMDQd0fg4MP1wn8gj5K6Rnu1T3iWkZfBlmGnAHCO6EAjZl122ucsGpRMMXHaqnPy2bQMD59I3kmibd16ommzwVfuF8OUtAySmdVpCxC2HU5Fgg=/8294.jpg?errorImage=false">
+       </div>
+       
+       <br></br>
+ 　　 <p class="blue--text"> 
+       <v-icon>mdi-pen</v-icon>
+       <v-icon>mdi-pen</v-icon>
+        タスクを↓ここに入力してね 
+       <v-icon>mdi-pen</v-icon>
+       <v-icon>mdi-pen</v-icon>
+      </p>
+          <v-text-field
+            label="入力欄"
+            placeholder="入力欄"
+            solo-inverted
+            v-model:value="task"
+          ></v-text-field>
+    <br>
+  タスク内容：{{ task }}　
+     <br>     <br>
+   <v-row>
+    <v-col cols="12">
+      <v-btn color="primary" rounded v-on:click="addTask(); buttonaddClicked()"> <v-icon>mdi-panda</v-icon>タスク追加　　<v-icon>mdi-pig-variant-outline</v-icon> </v-btn>
+    <br><br>
+       <v-btn  color="disabled"　v-on:click="clearAll"   
                  rounded
-                 >全てのToDoをクリア</v-btn>
-        </v-row>
-        <v-row 
-          class="mb-3 mt-3"
-          justify="center"
-          v-for="todo in todoList">
-          {{ todo }}
-        </v-row>
-      </v-container>
-    </v-content>
+       >　<v-icon>mdi-trash-can-outline</v-icon>全ToDoクリア<v-icon>mdi-trash-can-outline</v-icon>　</v-btn>
+    </v-col>
+    </v-row>
+    <br>
+       
+ <div class="d-flex flex-row">      
+     <v-card height="30px"
+      max-width="60px"
+      min-width="60px"
+      color="blue"
+      tonal>
+      <span>　状態　　</span><br/>
+      <br/>
+    </v-card>
+    <v-card height="30px"
+      max-width="330px"
+      color="green"
+      tonal>
+      <span>　タスク　　　　　　　　　　　　　　　　　　　　　　　</span><br/>
+      <br/>
+    </v-card>
+
+       <v-card height="30px"
+      max-width="100px"
+      color="grey"
+      tonal>
+      <span>　削除　　</span><br/>
+      <br/>
+    </v-card>
+
+</div>
+
+<!--  
+  <p v-for="(todo, index) in todoList" :key="index">{{ todo }}</p>
+<v-row>
+  <v-col cols="2">
+  <v-btn color="primary" v-on:click="removeTodo(index)" rounded>削除</v-btn>
+  </v-col>
+  </v-row>  -->
+
+<!--
+  <p  v-for="(todo, index) in todoList" :key="index">{{ todo }}
+      <v-row justify="end">
+  <v-btn color="pink" v-on:click="removeTodo(index);buttondelClicked()" rounded>削除<v-icon>mdi-trash-can-outline</v-icon></v-btn>
+  </v-row>
+</p>
+-->
+  <v-row >
+        <v-col align-self="end" style="border: 1px solid blue">
+          
+<div class= "text-decoration-underline"
+      Underline text>
+
+  <p  v-for="(todo, index) in todoList" :key="index">{{ todo }}
+
+    
+    
+      <v-row justify="end">
+  <v-btn color="pink" v-on:click="removeTodo(index);buttondelClicked()" rounded><v-icon>mdi-trash-can-outline</v-icon></v-btn>
+          </v-row>
+    
+</p>
+   </div>    
+    </v-col>
+    </v-row>  
+          
+          
+<br></br><br></br>
+ <h2 style="color:blue">目指せ！   タスククリア！</>
+     <v-img 
+            :width="150"
+            :height="130"
+  aspect-ratio="16/9"
+  cover
+            src="https://msp.c.yimg.jp/images/v2/FUTi93tXq405grZVGgDqG8WICJmD6BxXXLTtP8dilpAaOyuGFongc8Hm7mQ6ljIyO7e3k9pf43A6piZadpHPXL6YiwwJVc6cRoVW2VdEyD1y3E3aklUrCGV6GMn9eor4BGesCWnMzqHWlAgFZgQNv9MhJzloLb65W0Spr7NeaOrzE-G845rxiiRDSH0WQWwm1636mvfGJldEqRUd6aGkeAIYZSFpi9w6aae_cQLK7iM=/study_man_normal.png?errorImage=false">
+    <br></br>
+
+  <!-- 
+    <table border>
+      <tr>
+        <th v-for="h in tableHeader" v-bind:name="h.id">{{h.text}}</th>
+      </tr>
+      <tr v-for="d in tableData">
+        <td v-for="h in tableHeader" v-bind:name="h.id">{{d[h.id]}}</td>
+      </tr>
+    </table>
+-->
+    
+  </v-container>
   </v-app>
 </div>
 <!-- partial -->
