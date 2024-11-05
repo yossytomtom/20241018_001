@@ -7,20 +7,13 @@ const app = new Vue({
     task: '',
     state: '未了',
     todoList: [], // これは配列
-  
+  //}, 
   //
- 
-    tableHeader: [
-      { "id": "id", "text": "ID" },
-      { "id": "name", "text": "商品名" },
-      { "id": "fee", "text": "値段" }
-    ],
-    tableData: [
-      { "id": "012", "name": "たこ焼き", "fee": "150" },
-      { "id": "023", "name": "わたあめ", "fee": "100" },
-      { "id": "034", "name": "りんご飴", "fee": "120" }
-    ]
-  },
+    sizes: ['未了', '実施中', '完了'],
+        }, 
+    
+
+ //
   //
   methods: {
     // 関数はここ
